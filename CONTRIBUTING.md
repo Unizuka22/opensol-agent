@@ -16,7 +16,7 @@ git clone git@github.com:Unizuka22/opensol-agent.git
 cd opensol-agent
 npm install
 npm run build
-node dist/index.js token EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
+node dist/index.js token 9XQXjUhyV8n4Quwv6WHYzFco9Yst81Ga4Xxvc2KNjDvq
 ```
 
 If you have your own RPC endpoint, set it in `.env`:
