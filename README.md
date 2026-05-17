@@ -1,8 +1,26 @@
-# OpenSol Agent
+<p align="center">
+  <img src="assets/banner.png" alt="OpenSol Agent — AI-powered Solana intelligence for wallets, tokens, and transactions" width="100%"/>
+</p>
 
-OpenSol Agent is a CLI-first Solana intelligence agent that turns public wallet, token mint, and transaction data into plain-English investigation reports.
+<h1 align="center">OpenSol Agent</h1>
 
-It is built for researchers, open-source investigators, builders, and analysts who want a transparent first pass over Solana risk signals without running a trading bot, handling private keys, or relying on opaque scoring.
+<p align="center">
+  <em>CLI-first Solana intelligence. Turn public wallet, token mint, and transaction data into plain-English investigation reports.</em>
+</p>
+
+---
+
+OpenSol Agent is built for researchers, open-source investigators, builders, and analysts who want a transparent first pass over Solana risk signals without running a trading bot, handling private keys, or relying on opaque scoring.
+
+## How It Works
+
+<p align="center">
+  <img src="assets/how-it-works.svg" alt="OpenSol Agent flow: address input → on-chain probes → signal bubbles (mint authority, holders, activity, transfers) → risk score report" width="100%"/>
+</p>
+
+You give OpenSol Agent a Solana address. It probes the public RPC, gathers on-chain signals — mint authority, holder distribution, recent activity, token transfers — and condenses them into a transparent 0–100 risk score with the reasoning made visible.
+
+No keys. No trading. No black-box scoring.
 
 ## Why It Exists
 

@@ -1,0 +1,210 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" role="img" aria-label="OpenSol Agent — how it works animation">
+  <title>OpenSol Agent — How It Works</title>
+  <desc>An animated diagram. A Solana address pulses into a central agent node. The agent probes the Solana RPC, returning four data bubbles — Mint Authority, Holders, Activity, Transfers — which feed a risk score gauge.</desc>
+
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#0f0a2c"/>
+      <stop offset="100%" stop-color="#05030f"/>
+    </radialGradient>
+
+    <radialGradient id="agentGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="60%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </radialGradient>
+
+    <radialGradient id="bubbleCyan" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#67e8f9" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0891b2" stop-opacity="0.55"/>
+    </radialGradient>
+    <radialGradient id="bubblePurple" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#d8b4fe" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#7e22ce" stop-opacity="0.55"/>
+    </radialGradient>
+    <radialGradient id="bubblePink" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f9a8d4" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#be185d" stop-opacity="0.55"/>
+    </radialGradient>
+    <radialGradient id="bubbleAmber" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fde68a" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#b45309" stop-opacity="0.55"/>
+    </radialGradient>
+
+    <linearGradient id="gaugeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="50%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#f43f5e"/>
+    </linearGradient>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- background -->
+  <rect width="900" height="500" fill="url(#bgGrad)"/>
+
+  <!-- subtle grid -->
+  <g stroke="#1e293b" stroke-width="0.5" opacity="0.4">
+    <path d="M0 100 H900 M0 200 H900 M0 300 H900 M0 400 H900"/>
+    <path d="M150 0 V500 M300 0 V500 M450 0 V500 M600 0 V500 M750 0 V500"/>
+  </g>
+
+  <!-- ===== INPUT (left) ===== -->
+  <g transform="translate(70, 230)">
+    <rect x="0" y="0" width="170" height="44" rx="22" fill="#0b1a2a" stroke="#22d3ee" stroke-width="1.5"/>
+    <text x="20" y="28" font-family="Menlo, Consolas, monospace" font-size="14" fill="#67e8f9" letter-spacing="0.5">
+      So11…Wallet
+      <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+    </text>
+    <text x="85" y="-14" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="11" fill="#94a3b8" letter-spacing="2">INPUT</text>
+
+    <!-- pulse ring out of input -->
+    <circle cx="170" cy="22" r="4" fill="none" stroke="#22d3ee" stroke-width="2">
+      <animate attributeName="r" values="4;30;4" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;0;1" dur="3s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- ===== AGENT (center) ===== -->
+  <g transform="translate(450, 250)">
+    <!-- outer pulse rings -->
+    <circle r="70" fill="none" stroke="#a855f7" stroke-width="1" opacity="0.4">
+      <animate attributeName="r" values="60;90;60" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.4;0;0.4" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="55" fill="none" stroke="#22d3ee" stroke-width="1" opacity="0.5">
+      <animate attributeName="r" values="50;75;50" dur="4s" begin="1s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0;0.5" dur="4s" begin="1s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- agent body -->
+    <circle r="42" fill="url(#agentGrad)" filter="url(#softGlow)"/>
+    <circle r="42" fill="none" stroke="#22d3ee" stroke-width="1.5" opacity="0.9"/>
+
+    <!-- rotating ring -->
+    <g>
+      <circle r="50" fill="none" stroke="#a855f7" stroke-width="1" stroke-dasharray="3 6" opacity="0.7"/>
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="12s" repeatCount="indefinite"/>
+    </g>
+
+    <!-- agent glyph: stylized Solana-ish slash -->
+    <g fill="#e0f2fe" filter="url(#glow)">
+      <path d="M-18 -8 L14 -8 L18 -2 L-14 -2 Z" opacity="0.95"/>
+      <path d="M-18 2 L14 2 L18 8 L-14 8 Z" opacity="0.7"/>
+      <path d="M-18 -18 L14 -18 L18 -12 L-14 -12 Z" opacity="0.85"/>
+    </g>
+    <text y="32" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="10" fill="#a5f3fc" letter-spacing="3">AGENT</text>
+  </g>
+
+  <!-- connector input -> agent -->
+  <line x1="240" y1="252" x2="408" y2="250" stroke="#22d3ee" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.7">
+    <animate attributeName="stroke-dashoffset" from="0" to="-24" dur="1.5s" repeatCount="indefinite"/>
+  </line>
+
+  <!-- ===== DATA BUBBLES ===== -->
+  <!-- Bubble 1: Mint Authority (top-left) -->
+  <g transform="translate(280, 110)">
+    <line x1="60" y1="40" x2="170" y2="140" stroke="#67e8f9" stroke-width="1.2" stroke-dasharray="4 6" opacity="0.6">
+      <animate attributeName="stroke-dashoffset" from="-20" to="0" dur="1.6s" repeatCount="indefinite"/>
+    </line>
+    <circle cx="40" cy="30" r="38" fill="url(#bubbleCyan)" filter="url(#softGlow)">
+      <animate attributeName="r" values="36;40;36" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <text x="40" y="22" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#ecfeff" font-weight="600">MINT</text>
+    <text x="40" y="36" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#ecfeff" font-weight="600">AUTHORITY</text>
+    <text x="40" y="50" text-anchor="middle" font-family="Menlo, monospace" font-size="9" fill="#a5f3fc">active</text>
+  </g>
+
+  <!-- Bubble 2: Holders (top-right) -->
+  <g transform="translate(580, 110)">
+    <line x1="40" y1="40" x2="-70" y2="140" stroke="#d8b4fe" stroke-width="1.2" stroke-dasharray="4 6" opacity="0.6">
+      <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="1.6s" begin="0.4s" repeatCount="indefinite"/>
+    </line>
+    <circle cx="50" cy="30" r="38" fill="url(#bubblePurple)" filter="url(#softGlow)">
+      <animate attributeName="r" values="36;42;36" dur="3.7s" begin="0.6s" repeatCount="indefinite"/>
+    </circle>
+    <text x="50" y="28" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#f5f3ff" font-weight="600">HOLDERS</text>
+    <text x="50" y="44" text-anchor="middle" font-family="Menlo, monospace" font-size="9" fill="#e9d5ff">top 10: 62%</text>
+  </g>
+
+  <!-- Bubble 3: Activity (bottom-left) -->
+  <g transform="translate(280, 380)">
+    <line x1="60" y1="0" x2="170" y2="-100" stroke="#f9a8d4" stroke-width="1.2" stroke-dasharray="4 6" opacity="0.6">
+      <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="1.6s" begin="0.8s" repeatCount="indefinite"/>
+    </line>
+    <circle cx="40" cy="0" r="38" fill="url(#bubblePink)" filter="url(#softGlow)">
+      <animate attributeName="r" values="36;41;36" dur="3.3s" begin="0.3s" repeatCount="indefinite"/>
+    </circle>
+    <text x="40" y="-4" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#fdf2f8" font-weight="600">ACTIVITY</text>
+    <text x="40" y="12" text-anchor="middle" font-family="Menlo, monospace" font-size="9" fill="#fbcfe8">14 tx / 24h</text>
+  </g>
+
+  <!-- Bubble 4: Transfers (bottom-right) -->
+  <g transform="translate(580, 380)">
+    <line x1="40" y1="0" x2="-70" y2="-100" stroke="#fde68a" stroke-width="1.2" stroke-dasharray="4 6" opacity="0.6">
+      <animate attributeName="stroke-dashoffset" from="-20" to="0" dur="1.6s" begin="1.2s" repeatCount="indefinite"/>
+    </line>
+    <circle cx="50" cy="0" r="38" fill="url(#bubbleAmber)" filter="url(#softGlow)">
+      <animate attributeName="r" values="36;40;36" dur="3.9s" begin="0.9s" repeatCount="indefinite"/>
+    </circle>
+    <text x="50" y="-4" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#fffbeb" font-weight="600">TRANSFERS</text>
+    <text x="50" y="12" text-anchor="middle" font-family="Menlo, monospace" font-size="9" fill="#fde68a">SPL · 2022</text>
+  </g>
+
+  <!-- ===== OUTPUT GAUGE (right) ===== -->
+  <g transform="translate(720, 230)">
+    <text x="60" y="-14" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#94a3b8" letter-spacing="2">RISK SCORE</text>
+
+    <!-- gauge track -->
+    <rect x="0" y="6" width="120" height="10" rx="5" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <!-- gauge fill (animates 0 → 35) -->
+    <rect x="0" y="6" width="0" height="10" rx="5" fill="url(#gaugeGrad)" filter="url(#glow)">
+      <animate attributeName="width" values="0;42;42;42;0" keyTimes="0;0.35;0.65;0.85;1" dur="5s" repeatCount="indefinite"/>
+    </rect>
+
+    <!-- numeric readout -->
+    <text x="60" y="42" text-anchor="middle" font-family="Menlo, monospace" font-size="22" fill="#a5f3fc" font-weight="600" filter="url(#glow)">
+      <tspan>00</tspan>
+      <animate attributeName="opacity" values="0;1;1;1;0" keyTimes="0;0.15;0.65;0.85;1" dur="5s" repeatCount="indefinite"/>
+    </text>
+    <text x="60" y="42" text-anchor="middle" font-family="Menlo, monospace" font-size="22" fill="#c4b5fd" font-weight="600" filter="url(#glow)">
+      <tspan>35</tspan>
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.3;0.5;0.85;1" dur="5s" repeatCount="indefinite"/>
+    </text>
+
+    <text x="60" y="62" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#94a3b8">/100 · medium</text>
+
+    <!-- report icon -->
+    <g transform="translate(20, 80)">
+      <rect width="80" height="60" rx="6" fill="#0b1a2a" stroke="#22d3ee" stroke-width="1.2"/>
+      <line x1="12" y1="14" x2="68" y2="14" stroke="#67e8f9" stroke-width="1.5"/>
+      <line x1="12" y1="26" x2="60" y2="26" stroke="#a5f3fc" stroke-width="1" opacity="0.7"/>
+      <line x1="12" y1="36" x2="64" y2="36" stroke="#a5f3fc" stroke-width="1" opacity="0.6"/>
+      <line x1="12" y1="46" x2="50" y2="46" stroke="#a5f3fc" stroke-width="1" opacity="0.5"/>
+      <text x="40" y="78" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#94a3b8" letter-spacing="2">REPORT</text>
+    </g>
+  </g>
+
+  <!-- connector agent -> gauge -->
+  <line x1="492" y1="250" x2="718" y2="240" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.7">
+    <animate attributeName="stroke-dashoffset" from="0" to="-24" dur="1.5s" begin="0.6s" repeatCount="indefinite"/>
+  </line>
+
+  <!-- title -->
+  <text x="450" y="38" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-size="18" fill="#e2e8f0" font-weight="600" letter-spacing="1">How OpenSol Agent Works</text>
+  <text x="450" y="58" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#64748b" letter-spacing="2">ADDRESS → ON-CHAIN PROBES → SIGNALS → REPORT</text>
+</svg>
