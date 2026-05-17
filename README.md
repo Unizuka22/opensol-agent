@@ -2,10 +2,21 @@
   <img src="assets/banner.png" alt="OpenSol Agent — AI-powered Solana intelligence for wallets, tokens, and transactions" width="100%"/>
 </p>
 
-<h1 align="center">OpenSol Agent</h1>
+<h1 align="center">
+  <img src="assets/logo.png" alt="" width="28" height="28" align="center"/>
+  &nbsp;OpenSol Agent
+</h1>
 
 <p align="center">
   <em>CLI-first Solana intelligence. Turn public wallet, token mint, and transaction data into plain-English investigation reports.</em>
+</p>
+
+<p align="center">
+  <a href="https://github.com/Unizuka22/opensol-agent/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/Unizuka22/opensol-agent/ci.yml?branch=main&style=flat-square&color=22d3ee&labelColor=0b1a2a&label=CI" alt="CI status"/></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-06b6d4?style=flat-square&labelColor=0b1a2a" alt="License: MIT"/></a>
+  <img src="https://img.shields.io/badge/node-%E2%89%A520-22d3ee?style=flat-square&labelColor=0b1a2a&logo=nodedotjs&logoColor=white" alt="Node >= 20"/>
+  <img src="https://img.shields.io/badge/typescript-5.7-3178c6?style=flat-square&labelColor=0b1a2a&logo=typescript&logoColor=white" alt="TypeScript"/>
+  <img src="https://img.shields.io/badge/solana-mainnet-14F195?style=flat-square&labelColor=0b1a2a&logo=solana&logoColor=14F195" alt="Built for Solana"/>
 </p>
 
 ---
@@ -21,6 +32,30 @@ OpenSol Agent is built for researchers, open-source investigators, builders, and
 You give OpenSol Agent a Solana address. It probes the public RPC, gathers on-chain signals — mint authority, holder distribution, recent activity, token transfers — and condenses them into a transparent 0–100 risk score with the reasoning made visible.
 
 No keys. No trading. No black-box scoring.
+
+> Deeper reading: [`docs/architecture.md`](docs/architecture.md) for the data flow, [`docs/risk-model.md`](docs/risk-model.md) for how the score is built.
+
+## Quick Try
+
+After installing (see [Install](#install) below), point it at a real mint. **USDC on Solana** is a good first test — a legitimate, well-known token, so a low score is the expected sanity check:
+
+```bash
+opensol token EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
+```
+
+Try a meme-coin mint to see a higher score with active mint authority flags:
+
+```bash
+opensol token <pick-any-recent-launch-from-your-watchlist>
+```
+
+Capture structured output for piping into other tools:
+
+```bash
+opensol token EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v --format json --out usdc.json
+```
+
+See [`examples/`](examples/) for full sample reports.
 
 ## Why It Exists
 
