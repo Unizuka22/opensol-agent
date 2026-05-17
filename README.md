@@ -37,10 +37,10 @@ No keys. No trading. No black-box scoring.
 
 ## Quick Try
 
-After installing (see [Install](#install) below), point it at a real mint. **USDC on Solana** is a good first test — a legitimate, well-known token, so a low score is the expected sanity check:
+After installing (see [Install](#install) below), point it at a real Solana wallet address or token mint:
 
 ```bash
-opensol token EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v
+opensol token 9XQXjUhyV8n4Quwv6WHYzFco9Yst81Ga4Xxvc2KNjDvq
 ```
 
 Try a meme-coin mint to see a higher score with active mint authority flags:
@@ -52,7 +52,7 @@ opensol token <pick-any-recent-launch-from-your-watchlist>
 Capture structured output for piping into other tools:
 
 ```bash
-opensol token EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v --format json --out usdc.json
+opensol token 9XQXjUhyV8n4Quwv6WHYzFco9Yst81Ga4Xxvc2KNjDvq --format json --out report.json
 ```
 
 See [`examples/`](examples/) for full sample reports.
