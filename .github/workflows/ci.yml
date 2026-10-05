@@ -6,9 +6,16 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
-    name: Lint, test, build
+    name: Lint, test, build (Node ${{ matrix.node-version }})
     runs-on: ubuntu-latest
 
     strategy:
