@@ -196,7 +196,11 @@ npm run lint
 npm run build
 ```
 
+## Contributors
+
+- [aeyakovenko](https://github.com/aeyakovenko) — README update and documentation contributions
+
 ## License
 
 MIT
-<!-- Updated: Sun May 17 04:25:27 PM UTC 2026 -->
+<!-- Updated: Mon Oct 5 2026 -->
