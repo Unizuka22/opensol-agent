@@ -33,6 +33,14 @@ You give OpenSol Agent a Solana address. It probes the public RPC, gathers on-ch
 
 No keys. No trading. No black-box scoring.
 
+## Project Token
+
+The OpenSol project token mint address is:
+
+```text
+3RSAGUGNvL4x27ukwRybPE7WUQMiUCWtgYJezLUgpump
+```
+
 > Deeper reading: [`docs/architecture.md`](docs/architecture.md) for the data flow, [`docs/risk-model.md`](docs/risk-model.md) for how the score is built.
 
 ## Quick Try
